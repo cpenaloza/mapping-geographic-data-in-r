@@ -141,14 +141,14 @@ Every area of the US belongs to a census tract, even if it's an area in which pe
 First, I'm going to pull in my API key.  You'll want to change the line below or put a file containing your API key in the place specified below.  I've excluded the "Private" folder from being included in the GitHub repo, so you'll want to add your own on your local machine.
 
 ```{r}
-census_key <- readLines("../Private/census_api_key.txt")
+census_key <- readLines(here::here("Private", "census_api_key.txt"))
 ```
 
 Let's use `tidycensus`!  It creates a smoother experience for a handful of Census API calls.  I'll set my census key once using `tidycensus::census_key` so that I don't have to keep referencing it in API calls I make.
 
 ```{r}
 library(tidycensus)
-census_api_key(census_key)
+census_api_key(census_key, install = TRUE)
 options(tigris_use_cache = TRUE)
 ```
 
@@ -356,7 +356,7 @@ table(philly_latino_wide$P004002 + philly_latino_wide$P004003 == philly_latino_w
 Great, we can find the percentage Latino easily:
 
 ```{r}
-philly_latino_wide <- philly_latino_wide %>% mutate (pct_latino = (P004003/P004001)*100)
+philly_latino_wide <- philly_latino_wide %>% mutate(pct_latino = (P004003/P004001)*100)
 ```
 
 Now, let's map!

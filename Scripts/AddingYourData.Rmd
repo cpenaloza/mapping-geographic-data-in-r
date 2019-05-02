@@ -231,7 +231,8 @@ You can see that the extra diagnostic layer was helpful to show that the shootin
 Let's take a peek at our fake data, which purports to give the number of minutes various patients on an obesity-related research project reported exercising.
 
 ```{r}
-fake_exercise_data <- read.csv("../Data/fake_exercise_data.csv", stringsAsFactors = FALSE)
+# fake_exercise_data <- read.csv("../Data/fake_exercise_data.csv", stringsAsFactors = FALSE)
+fake_exercise_data <- read.csv(here::here('Data', "fake_exercise_data.csv"))
 head(fake_exercise_data)
 ```
 
@@ -350,6 +351,7 @@ addPolygons(data = philadelphiaCensusTracts,
       group = "Mean Exercise in Minutes"
   ) %>%
   addCircles(lat = shootings$lat, lng = shootings$lng, color = "dark grey", weight = 1, radius = 100, group = "Frequency of Shootings With Injury") %>%
+  #addCircles behaves different than addCircleMarks -or something like that-, one zooms the other doesn't.
     addCircles(lat = shootings$lat, lng = shootings$lng, color = "dark grey", weight = 1, radius = 100, group = "Mean Exercise in Minutes") %>%
     addLayersControl(
     baseGroups = c("Frequency of Shootings With Injury", "Mean Exercise in Minutes"),
