@@ -13,6 +13,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, cache = TRUE)
 ```
 
+<!-- https://tinyurl.com/odsc-mapping -->
+
 ## Purposes
 
 So, you have some data... perhaps you want to look at how your patients are responding to an exercise intervention for obesity and see if there's a difference in compliance and weight loss success that could be related to violence near home that make it unsafe to play outside.  
